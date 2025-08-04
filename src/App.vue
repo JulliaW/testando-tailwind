@@ -1,9 +1,15 @@
-<script setup></script>
-
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <h1 class="text-3xl font-bold text-blue-600">Olá, Tailwind com Vue!</h1>
+  <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <!-- Sidebar -->
+    <Sidebar />
+
+    <!-- Conteúdo principal -->
+    <main class="flex-1 p-6 overflow-auto">
+      <RouterView />
+    </main>
   </div>
 </template>
 
-<style scoped></style>
+<script setup>
+import Sidebar from './components/Sidebar.vue'
+</script>
