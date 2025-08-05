@@ -68,7 +68,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
 
 const form = ref({
   ean: '',
@@ -86,29 +86,26 @@ const handleSubmit = () => {
 
   if (!form.value.ean || !form.value.descricao) return
 
-  // Recuperar produtos existentes
   const produtosSalvos = JSON.parse(localStorage.getItem('produtos') || '[]')
 
-  // Criar novo produto com ID único (timestamp)
   const novoProduto = {
     id: Date.now(),
     ...form.value,
   }
 
-  // Salvar no localStorage
   produtosSalvos.push(novoProduto)
   localStorage.setItem('produtos', JSON.stringify(produtosSalvos))
 
-  // Feedback
   submitted.value = true
   showErrors.value = false
 
-  // Limpar formulário
   form.value = {
     ean: '',
     descricao: '',
     ncm: '',
     cest: '',
   }
+
+  emit('close')
 }
 </script>

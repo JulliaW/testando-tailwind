@@ -31,20 +31,12 @@
           Dashboard
         </RouterLink>
         <RouterLink
-          to="/cadastro"
+          to="/produtos"
           class="block px-4 py-2 rounded hover:bg-gray-700"
-          :class="{ 'bg-gray-700': isActive('/cadastro') }"
+          :class="{ 'bg-gray-700': isActive('/produtos') }"
           @click="closeOnMobile"
         >
-          Cadastro
-        </RouterLink>
-        <RouterLink
-          to="/listagem"
-          class="block px-4 py-2 rounded hover:bg-gray-700"
-          :class="{ 'bg-gray-700': isActive('/listagem') }"
-          @click="closeOnMobile"
-        >
-          Listagem
+          Produtos
         </RouterLink>
       </nav>
     </div>

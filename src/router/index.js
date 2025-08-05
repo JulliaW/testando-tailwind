@@ -3,9 +3,8 @@ import {
   createWebHistory
 } from 'vue-router'
 
-import Dashboard from '../views/Dashboard.vue'
-import Cadastro from '../views/Cadastro.vue'
-import Listagem from '../views/Listagem.vue'
+import Dashboard from '@/views/Dashboard.vue'
+import Produtos from '@/views/Produtos.vue'
 
 const routes = [{
     path: '/',
@@ -16,12 +15,8 @@ const routes = [{
     component: Dashboard
   },
   {
-    path: '/cadastro',
-    component: Cadastro
-  },
-  {
-    path: '/listagem',
-    component: Listagem
+    path: '/produtos',
+    component: Produtos
   },
 ]
 
