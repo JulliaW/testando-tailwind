@@ -5,7 +5,7 @@
       class="md:hidden fixed top-4 left-4 z-50 bg-gray-800 text-white p-2 rounded focus:outline-none"
     >
       <span v-if="!isOpen"><i class="fa-solid fa-bars"></i></span>
-      <span v-else>Aqui<i class="fa-solid fa-xmark"></i></span>
+      <span v-else><i class="fa-solid fa-xmark"></i></span>
     </button>
 
     <div
@@ -15,7 +15,9 @@
         'md:translate-x-0 md:flex',
       ]"
     >
-      <div class="text-2xl font-bold p-6 border-b border-gray-700">Meu Painel</div>
+      <div class="p-6 border-b border-gray-700 flex justify-center">
+        <img src="@/assets/images/white-logo.png" alt="Logo" class="h-12 w-auto" />
+      </div>
 
       <nav class="flex-1 px-4 py-6 space-y-2">
         <RouterLink
@@ -24,15 +26,21 @@
           :class="{ 'bg-gray-700': isActive('/dashboard') }"
           @click="closeOnMobile"
         >
-          Dashboard
+          <span class="flex items-center gap-2">
+            <i class="fa-solid fa-chart-area"></i>
+            Dashboard
+          </span>
         </RouterLink>
+
         <RouterLink
           to="/produtos"
           class="block px-4 py-2 rounded hover:bg-gray-700"
           :class="{ 'bg-gray-700': isActive('/produtos') }"
           @click="closeOnMobile"
         >
-          Produtos
+          <span class="flex items-center gap-2"
+            ><i class="fa-solid fa-cart-shopping"></i>Produtos</span
+          >
         </RouterLink>
       </nav>
     </div>

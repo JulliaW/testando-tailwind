@@ -1,9 +1,8 @@
 <template>
-  <div class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+  <div class="max-w-3xl mx-auto">
     <h1 class="text-2xl font-bold mb-6">Cadastro de Produto</h1>
 
     <form @submit.prevent="handleSubmit" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- EAN -->
       <div>
         <label class="block mb-1 font-medium">EAN <span class="text-red-500">*</span></label>
         <input
@@ -15,7 +14,6 @@
         />
       </div>
 
-      <!-- Descrição -->
       <div>
         <label class="block mb-1 font-medium">Descrição <span class="text-red-500">*</span></label>
         <input
@@ -27,7 +25,6 @@
         />
       </div>
 
-      <!-- NCM -->
       <div>
         <label class="block mb-1 font-medium">NCM</label>
         <input
@@ -38,7 +35,6 @@
         />
       </div>
 
-      <!-- CEST -->
       <div>
         <label class="block mb-1 font-medium">CEST</label>
         <input
@@ -49,18 +45,16 @@
         />
       </div>
 
-      <!-- Botão -->
       <div class="md:col-span-2 mt-4">
         <button
           type="submit"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+          class="w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded"
         >
-          Salvar Produto
+          Salvar
         </button>
       </div>
     </form>
 
-    <!-- Feedback -->
     <div v-if="submitted" class="mt-6 p-4 bg-green-100 text-green-800 rounded">
       Produto cadastrado com sucesso!
     </div>
@@ -79,6 +73,7 @@ const form = ref({
 
 const submitted = ref(false)
 const showErrors = ref(false)
+const emit = defineEmits(['close', 'salvou'])
 
 const handleSubmit = () => {
   submitted.value = false
@@ -106,6 +101,6 @@ const handleSubmit = () => {
     cest: '',
   }
 
-  emit('close')
+  emit('salvou')
 }
 </script>

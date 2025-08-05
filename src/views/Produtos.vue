@@ -3,14 +3,14 @@
     <div class="flex justify-end mb-4">
       <button
         type="button"
-        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+        class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded"
         @click="showModal = true"
       >
         <i class="fa-solid fa-plus"></i>
       </button>
     </div>
 
-    <Listagem />
+    <Listagem ref="listagemRef" />
 
     <div
       v-if="showModal"
@@ -26,7 +26,7 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <Cadastro @close="showModal = false" />
+        <Cadastro @salvou="fecharModalEAtualizar" />
       </div>
     </div>
   </div>
@@ -38,4 +38,10 @@ import Listagem from './Listagem.vue'
 import Cadastro from './Cadastro.vue'
 
 const showModal = ref(false)
+const listagemRef = ref(null)
+
+const fecharModalEAtualizar = () => {
+  showModal.value = false
+  listagemRef.value?.carregarProdutos()
+}
 </script>
