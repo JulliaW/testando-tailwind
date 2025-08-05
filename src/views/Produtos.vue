@@ -16,7 +16,6 @@
       <div
         v-if="showModal"
         class="fixed inset-0 z-40 flex items-center justify-center backdrop-blur-sm bg-white/60 dark:bg-gray-800/60"
-        @click="fecharModalEAtualizar"
       />
     </Transition>
 
@@ -28,7 +27,13 @@
       leave-from-class="opacity-100 scale-100"
       leave-to-class="opacity-0 scale-95"
     >
-      <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center">
+      <div
+        v-if="showModal"
+        class="fixed inset-0 z-50 flex items-center justify-center"
+        @click.self="fecharModalEAtualizar"
+        @keydown.esc="fecharModalEAtualizar"
+        tabindex="0"
+      >
         <div
           class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-6 w-full max-w-xl relative ring-1 ring-black/10 dark:ring-white/10"
         >
@@ -47,7 +52,7 @@
 </template>
 
 <script setup>
-import { ref, Transition } from 'vue'
+import { ref, Transition, watch } from 'vue'
 import Listagem from './Listagem.vue'
 import Cadastro from './Cadastro.vue'
 
@@ -58,4 +63,11 @@ const fecharModalEAtualizar = () => {
   showModal.value = false
   listagemRef.value?.carregarProdutos()
 }
+
+watch(showModal, async (val) => {
+  if (val) {
+    await nextTick()
+    modalContainer.value?.focus()
+  }
+})
 </script>
