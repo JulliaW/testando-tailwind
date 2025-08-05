@@ -6,13 +6,12 @@
         class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
         @click="showModal = true"
       >
-        Novo
+        <i class="fa-solid fa-plus"></i>
       </button>
     </div>
 
     <Listagem />
 
-    <!-- Modal backdrop -->
     <div
       v-if="showModal"
       class="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/60 dark:bg-gray-800/60"
@@ -20,15 +19,13 @@
       <div
         class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-6 w-full max-w-xl relative ring-1 ring-black/10 dark:ring-white/10"
       >
-        <!-- Botão de fechar -->
         <button
           @click="showModal = false"
           class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl"
         >
-          ×
+          <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <!-- Componente de cadastro -->
         <Cadastro @close="showModal = false" />
       </div>
     </div>

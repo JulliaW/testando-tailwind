@@ -68,19 +68,16 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 
-// Estado local
 const produtos = ref([])
 const filtro = ref('')
 const paginaAtual = ref(1)
 const itensPorPagina = 5
 
-// Carrega produtos do localStorage ao montar
 onMounted(() => {
   const dados = localStorage.getItem('produtos')
   produtos.value = dados ? JSON.parse(dados) : []
 })
 
-// Filtragem
 const produtosFiltrados = computed(() => {
   if (!filtro.value.trim()) return produtos.value
   const termo = filtro.value.toLowerCase()
@@ -89,7 +86,6 @@ const produtosFiltrados = computed(() => {
   )
 })
 
-// Paginação
 const totalPaginas = computed(() => Math.ceil(produtosFiltrados.value.length / itensPorPagina))
 
 const produtosPaginados = computed(() => {
@@ -97,7 +93,6 @@ const produtosPaginados = computed(() => {
   return produtosFiltrados.value.slice(start, start + itensPorPagina)
 })
 
-// Corrigir pagina atual se filtro mudar e reduzir resultados
 watch(produtosFiltrados, () => {
   if (paginaAtual.value > totalPaginas.value) {
     paginaAtual.value = 1

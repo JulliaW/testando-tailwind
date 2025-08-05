@@ -1,15 +1,13 @@
 <template>
   <div>
-    <!-- Botão hamburguer (mobile only) -->
     <button
       @click="isOpen = !isOpen"
       class="md:hidden fixed top-4 left-4 z-50 bg-gray-800 text-white p-2 rounded focus:outline-none"
     >
-      <span v-if="!isOpen">☰</span>
-      <span v-else>✕</span>
+      <span v-if="!isOpen"><i class="fa-solid fa-bars"></i></span>
+      <span v-else>Aqui<i class="fa-solid fa-xmark"></i></span>
     </button>
 
-    <!-- Sidebar (mobile: v-if, desktop: sempre visível) -->
     <div
       :class="[
         'fixed md:static top-0 left-0 h-screen w-64 bg-gray-800 text-white flex-col z-40 transition-transform duration-300 ease-in-out',
@@ -17,10 +15,8 @@
         'md:translate-x-0 md:flex',
       ]"
     >
-      <!-- Título -->
       <div class="text-2xl font-bold p-6 border-b border-gray-700">Meu Painel</div>
 
-      <!-- Navegação -->
       <nav class="flex-1 px-4 py-6 space-y-2">
         <RouterLink
           to="/dashboard"
@@ -60,7 +56,7 @@ const closeOnMobile = () => {
 
 // Fecha automaticamente ao redimensionar para desktop
 const handleResize = () => {
-  if (window.innerWidth >= 768) isOpen.value = true
+  if (window.innerWidth >= 768) isOpen.value = false
 }
 
 onMounted(() => {
